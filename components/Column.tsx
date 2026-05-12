@@ -33,9 +33,9 @@ export function Column({
   return (
     <div className="flex flex-col bg-[#ebecf0] dark:bg-[#1e293b]/50 rounded-lg overflow-hidden min-h-[500px] flex-1">
       {/* Header */}
-      <div className="p-4 flex items-center justify-between">
+      <div className="bg-slate-200 p-4 flex items-center justify-between">
         <div>
-          <h2 className="font-semibold text-[15px] text-[#172b4d] dark:text-slate-200">
+          <h2 className="font-semibold text-xl  text-[#172b4d] dark:text-slate-200">
             {getStatusLabel(status)}
           </h2>
           <p className="text-[13px] font-medium text-[#5e6c84] dark:text-slate-400 mt-0.5">

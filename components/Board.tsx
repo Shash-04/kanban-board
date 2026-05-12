@@ -42,45 +42,6 @@ export function Board() {
     setActiveId(event.active.id as string);
   };
 
-  // const handleDragOver = (event: DragOverEvent) => {
-  //   const { active, over } = event;
-  //   if (!over) return;
-
-  //   const activeTask = tasks.find(t => t.id === active.id);
-  //   if (!activeTask) return;
-
-  //   const overId = over.id as string;
-  //   const isOverColumn = COLUMNS.includes(overId as TaskStatus);
-
-  //   if (isOverColumn) {
-  //     const columnTasks = getTasksByStatus(overId as TaskStatus)
-  //       .sort((a, b) => a.order - b.order);
-
-  //     const newOrder = columnTasks.length === 0
-  //       ? generateFractionalOrder()
-  //       : generateFractionalOrder(columnTasks[columnTasks.length - 1]?.order);
-
-  //     moveTask(activeTask.id, overId as TaskStatus, newOrder);
-  //   } else {
-  //     const overTask = tasks.find(t => t.id === overId);
-  //     if (!overTask) return;
-
-  //     const allTasksInColumn = getTasksByStatus(overTask.status)
-  //       .sort((a, b) => a.order - b.order);
-
-  //     const overIndex = allTasksInColumn.findIndex(t => t.id === overId);
-  //     const newOrder =
-  //       overIndex === 0
-  //         ? generateFractionalOrder(undefined, allTasksInColumn[0]?.order)
-  //         : generateFractionalOrder(
-  //           allTasksInColumn[overIndex - 1]?.order,
-  //           allTasksInColumn[overIndex]?.order
-  //         );
-
-  //     moveTask(activeTask.id, overTask.status, newOrder);
-  //   }
-  // };
-
  const handleDragEnd = (event: DragEndEvent) => {
   const { active, over } = event;
 
@@ -172,7 +133,6 @@ export function Board() {
       <DndContext
         sensors={sensors}
         onDragStart={handleDragStart}
-        // onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

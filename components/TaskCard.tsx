@@ -3,7 +3,7 @@
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Trash2 } from 'lucide-react';
+import { GripVertical, Trash2, Edit2 } from 'lucide-react';
 import { Task } from '@/types';
 import { Badge } from './Badge';
 import { Avatar } from './Avatar';
@@ -77,13 +77,22 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
 
           <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-300/50 dark:border-slate-600/50">
             <Avatar name={task.assignee} size="sm" />
-            <button
-              onClick={() => onDelete(task)}
-              className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-red-500 dark:text-slate-400 dark:hover:bg-red-600 dark:hover:text-white transition-colors duration-200"
-              title="Delete task"
-            >
-              <Trash2 size={16} />
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => onEdit(task)}
+                className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-[#0052CC] dark:text-slate-400 dark:hover:bg-blue-600 dark:hover:text-white transition-colors duration-200"
+                title="Edit task"
+              >
+                <Edit2 size={16} />
+              </button>
+              <button
+                onClick={() => onDelete(task)}
+                className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-red-500 dark:text-slate-400 dark:hover:bg-red-600 dark:hover:text-white transition-colors duration-200"
+                title="Delete task"
+              >
+                <Trash2 size={16} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

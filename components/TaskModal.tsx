@@ -21,6 +21,7 @@ export function TaskModal({ isOpen, task, onClose, onSave }: TaskModalProps) {
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState<Priority>('medium');
   const [assignee, setAssignee] = useState('');
+  const [titleError, setTitleError] = useState('');
   const { tasks } = useBoardStore();
 
   const assignees = getAllAssignees(tasks);
@@ -37,11 +38,15 @@ export function TaskModal({ isOpen, task, onClose, onSave }: TaskModalProps) {
       setPriority('medium');
       setAssignee('');
     }
+    setTitleError('');
   }, [task, isOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return;
+    if (!title.trim()) {
+      setTitleError('Task title is required');
+      return;
+    }
 
     onSave({
       title,
@@ -78,9 +83,14 @@ export function TaskModal({ isOpen, task, onClose, onSave }: TaskModalProps) {
           <Input
             label="Task Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              if (titleError) setTitleError('');
+            }}
             placeholder="Enter task title"
+            error={titleError}
             autoFocus
+            required
           />
 
           <Textarea
