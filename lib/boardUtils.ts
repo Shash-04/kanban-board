@@ -22,11 +22,11 @@ export const generateFractionalOrder = (before?: number, after?: number): number
 export const getPriorityColor = (priority: Priority): string => {
   switch (priority) {
     case 'high':
-      return 'bg-red-500/20 text-red-700 border-red-200';
+      return 'bg-red-50 text-red-600 border border-red-100 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20';
     case 'medium':
-      return 'bg-yellow-500/20 text-yellow-700 border-yellow-200';
+      return 'bg-yellow-50 text-yellow-600 border border-yellow-100 dark:bg-yellow-500/10 dark:text-yellow-400 dark:border-yellow-500/20';
     case 'low':
-      return 'bg-green-500/20 text-green-700 border-green-200';
+      return 'bg-green-50 text-green-600 border border-green-100 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20';
   }
 };
 

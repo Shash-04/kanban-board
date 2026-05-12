@@ -31,23 +31,23 @@ export function Column({
   const taskIds = tasks.map(t => t.id);
 
   return (
-    <div className="flex flex-col bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden min-h-[500px] flex-1">
+    <div className="flex flex-col bg-[#ebecf0] dark:bg-[#1e293b]/50 rounded-lg overflow-hidden min-h-[500px] flex-1">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between">
+      <div className="p-4 flex items-center justify-between">
         <div>
-          <h2 className="font-semibold text-gray-900 dark:text-white">
+          <h2 className="font-semibold text-[15px] text-[#172b4d] dark:text-slate-200">
             {getStatusLabel(status)}
           </h2>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            {filteredTasks.length} of {tasks.length}
+          <p className="text-[13px] font-medium text-[#5e6c84] dark:text-slate-400 mt-0.5">
+            {filteredTasks.length} {filteredTasks.length === 1 ? 'task' : 'tasks'}
           </p>
         </div>
         <button
           onClick={() => onAddTask(status)}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition"
+          className="p-1.5 hover:bg-[#091e4214] dark:hover:bg-slate-700 rounded transition-colors"
           title="Add task"
         >
-          <Plus size={20} className="text-gray-600 dark:text-gray-400" />
+          <Plus size={18} className="text-[#42526e] dark:text-slate-300" />
         </button>
       </div>
 
@@ -59,7 +59,7 @@ export function Column({
         <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
           {tasks.length === 0 ? (
             <div className="flex items-center justify-center h-full">
-              <p className="text-sm text-gray-500 dark:text-gray-400">No tasks</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">No tasks</p>
             </div>
           ) : (
             tasks.map(task => {

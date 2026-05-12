@@ -191,7 +191,7 @@ export function Board() {
 
         <DragOverlay>
           {activeDragTask && (
-            <div className="opacity-50">
+            <div className="shadow-2xl rotate-2 cursor-grabbing">
               <TaskCard
                 task={activeDragTask}
                 onEdit={() => {}}

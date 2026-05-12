@@ -35,13 +35,13 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
   const getCardColor = (priority: Task['priority']) => {
     switch (priority) {
       case 'high':
-        return 'bg-red-100 border-red-200 dark:bg-red-900/20 dark:border-red-800/50';
+        return 'bg-red-100 border-red-200 dark:bg-red-900/50 dark:border-red-800/60';
       case 'medium':
-        return 'bg-yellow-200 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-800/50';
+        return 'bg-yellow-100 border-yellow-200 dark:bg-yellow-900/50 dark:border-yellow-800/60';
       case 'low':
-        return 'bg-green-200 border-green-200 dark:bg-green-900/20 dark:border-green-800/50';
+        return 'bg-green-100 border-green-200 dark:bg-green-900/50 dark:border-green-800/60';
       default:
-        return 'bg-white border-gray-200 dark:bg-gray-700 dark:border-gray-600';
+        return 'bg-white border-slate-200 dark:bg-slate-800 dark:border-slate-700';
     }
   };
 
@@ -49,8 +49,8 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
     <div
       ref={setNodeRef}
       style={style}
-      className={`${getCardColor(task.priority)} rounded-lg border p-4 shadow-sm hover:shadow-md transition cursor-grab active:cursor-grabbing ${isDragging ? 'opacity-50' : ''
-        } ${isFiltered ? 'opacity-50 pointer-events-none' : ''}`}
+      className={`${getCardColor(task.priority)} rounded-lg border p-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-grab active:cursor-grabbing ${isDragging ? 'opacity-50 scale-105' : ''
+        } ${isFiltered ? 'opacity-40 pointer-events-none' : ''}`}
     >
       <div className="flex gap-2 items-start">
         <button
@@ -62,10 +62,10 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
         </button>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-medium text-gray-900 dark:text-white truncate text-sm">
+          <h3 className="font-semibold text-slate-900 dark:text-slate-100 truncate text-[15px]">
             {task.title}
           </h3>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+          <p className="text-[13px] text-slate-700 dark:text-slate-300 mt-1.5 line-clamp-2 leading-relaxed">
             {task.description}
           </p>
 
@@ -75,16 +75,14 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
             </Badge>
           </div>
 
-          <div className="flex items-center justify-between mt-3">
+          <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-300/50 dark:border-slate-600/50">
             <Avatar name={task.assignee} size="sm" />
             <button
               onClick={() => onDelete(task)}
-              className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition p-1"
+              className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-red-500 dark:text-slate-400 dark:hover:bg-red-600 dark:hover:text-white transition-colors duration-200"
+              title="Delete task"
             >
-              <div className="w-8 h-8 rounded-full bg-red-300 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition cursor-pointer">
-                <Trash2 size={16} />
-              </div>
-
+              <Trash2 size={16} />
             </button>
           </div>
         </div>

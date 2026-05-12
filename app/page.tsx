@@ -20,16 +20,18 @@ export default function Home() {
   const { filter } = useBoardStore();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-[#f4f5f7] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Kanban Board
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Manage your tasks with drag-and-drop and powerful filters
-          </p>
+      <header className="bg-[#0052CC] dark:bg-[#1e293b] sticky top-0 z-10 shadow-md transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-white tracking-tight">
+              Kanban Board
+            </h1>
+            <p className="text-[15px] font-medium text-blue-100 dark:text-gray-300 mt-1">
+              Manage your project tasks and workflow
+            </p>
+          </div>
         </div>
       </header>
 
@@ -41,32 +43,32 @@ export default function Home() {
               <FilterBar />
 
               {/* Undo/Redo Controls */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 space-y-2">
-                <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase">
+              <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 space-y-3 shadow-sm">
+                <p className="text-[15px] font-semibold text-slate-800 dark:text-slate-200">
                   History
                 </p>
                 <button
                   onClick={() => undo()}
-                  className="w-full px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition flex items-center justify-center gap-2"
+                  className="w-full px-4 py-2.5 text-[14px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-[#0052CC] hover:text-white dark:hover:bg-blue-600 rounded-md transition-colors flex items-center justify-center gap-2"
                 >
-                  <RotateCcw size={14} />
+                  <RotateCcw size={16} />
                   Undo (Ctrl+Z)
                 </button>
                 <button
                   onClick={() => redo()}
-                  className="w-full px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition flex items-center justify-center gap-2"
+                  className="w-full px-4 py-2.5 text-[14px] font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-[#0052CC] hover:text-white dark:hover:bg-blue-600 rounded-md transition-colors flex items-center justify-center gap-2"
                 >
-                  <RotateCcw size={14} />
+                  <RotateCcw size={16} />
                   Redo (Ctrl+Shift+Z)
                 </button>
               </div>
 
               {/* Info */}
-              <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4 space-y-2">
-                <p className="text-xs font-semibold text-blue-900 dark:text-blue-100 uppercase">
+              <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-5 space-y-2 shadow-sm">
+                <p className="text-[15px] font-semibold text-[#0052CC] dark:text-blue-300">
                   Tip
                 </p>
-                <p className="text-xs text-blue-700 dark:text-blue-200">
+                <p className="text-[14px] text-blue-900 dark:text-blue-100 leading-relaxed">
                   Drag cards between columns or reorder within a column. Filtered tasks appear faded.
                 </p>
               </div>
