@@ -32,13 +32,25 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
     opacity: isDragging ? 0.5 : isFiltered ? 0.5 : 1,
   };
 
+  const getCardColor = (priority: Task['priority']) => {
+    switch (priority) {
+      case 'high':
+        return 'bg-red-100 border-red-200 dark:bg-red-900/20 dark:border-red-800/50';
+      case 'medium':
+        return 'bg-yellow-200 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-800/50';
+      case 'low':
+        return 'bg-green-200 border-green-200 dark:bg-green-900/20 dark:border-green-800/50';
+      default:
+        return 'bg-white border-gray-200 dark:bg-gray-700 dark:border-gray-600';
+    }
+  };
+
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className={`bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-4 shadow-sm hover:shadow-md transition cursor-grab active:cursor-grabbing ${
-        isDragging ? 'opacity-50' : ''
-      } ${isFiltered ? 'opacity-50 pointer-events-none' : ''}`}
+      className={`${getCardColor(task.priority)} rounded-lg border p-4 shadow-sm hover:shadow-md transition cursor-grab active:cursor-grabbing ${isDragging ? 'opacity-50' : ''
+        } ${isFiltered ? 'opacity-50 pointer-events-none' : ''}`}
     >
       <div className="flex gap-2 items-start">
         <button
@@ -69,7 +81,10 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
               onClick={() => onDelete(task)}
               className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition p-1"
             >
-              <Trash2 size={16} />
+              <div className="w-8 h-8 rounded-full bg-red-300 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition cursor-pointer">
+                <Trash2 size={16} />
+              </div>
+
             </button>
           </div>
         </div>
