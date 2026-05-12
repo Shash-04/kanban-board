@@ -178,18 +178,30 @@ const useBoardStore = create<BoardState>()(
           },
 
           getTasksByStatus: (status) => {
+            const priorityWeight = { high: 1, medium: 2, low: 3 };
             return get().tasks
               .filter(task => task.status === status)
-              .sort((a, b) => a.order - b.order);
+              .sort((a, b) => {
+                if (priorityWeight[a.priority] !== priorityWeight[b.priority]) {
+                  return priorityWeight[a.priority] - priorityWeight[b.priority];
+                }
+                return a.order - b.order;
+              });
           },
 
           getFilteredTasks: (status) => {
             const { tasks, filter } = get();
+            const priorityWeight = { high: 1, medium: 2, low: 3 };
             return tasks
               .filter(task => task.status === status)
               .filter(task => !filter.priority || task.priority === filter.priority)
               .filter(task => !filter.assignee || task.assignee === filter.assignee)
-              .sort((a, b) => a.order - b.order);
+              .sort((a, b) => {
+                if (priorityWeight[a.priority] !== priorityWeight[b.priority]) {
+                  return priorityWeight[a.priority] - priorityWeight[b.priority];
+                }
+                return a.order - b.order;
+              });
           },
         }),
         {

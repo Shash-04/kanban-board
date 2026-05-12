@@ -25,8 +25,8 @@ export default function Home() {
       <header className="bg-[#0052CC] dark:bg-[#1e293b] sticky top-0 z-10 shadow-md transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">
-              Kanban Board
+            <h1 className="text-3xl font-bold text-white tracking-tight">
+              Task Forge
             </h1>
             <p className="text-[15px] font-medium text-blue-100 dark:text-gray-300 mt-1">
               Manage your project tasks and workflow

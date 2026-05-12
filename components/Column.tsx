@@ -28,14 +28,44 @@ export function Column({
 }: ColumnProps) {
   const { setNodeRef } = useDroppable({ id: status });
 
+  const getHeaderBgColor = (colStatus: TaskStatus) => {
+    switch (colStatus) {
+      case 'todo':
+        return 'bg-orange-200 dark:bg-orange-900/60';
+      case 'in-progress':
+        return 'bg-blue-200 dark:bg-blue-900/60';
+      case 'in-review':
+        return 'bg-purple-200 dark:bg-purple-900/60';
+      case 'done':
+        return 'bg-green-200 dark:bg-green-900/60';
+      default:
+        return 'bg-slate-200 dark:bg-slate-800';
+    }
+  };
+
+  const getHeaderTextColor = (colStatus: TaskStatus) => {
+    switch (colStatus) {
+      case 'todo':
+        return 'text-orange-800 dark:text-orange-200';
+      case 'in-progress':
+        return 'text-blue-800 dark:text-blue-200';
+      case 'in-review':
+        return 'text-purple-800 dark:text-purple-200';
+      case 'done':
+        return 'text-green-800 dark:text-green-200';
+      default:
+        return 'text-[#172b4d] dark:text-slate-200';
+    }
+  };
+
   const taskIds = tasks.map(t => t.id);
 
   return (
     <div className="flex flex-col bg-[#ebecf0] dark:bg-[#1e293b]/50 rounded-lg overflow-hidden min-h-[500px] flex-1">
       {/* Header */}
-      <div className="bg-slate-200 p-4 flex items-center justify-between">
+      <div className={`${getHeaderBgColor(status)} p-4 flex items-center justify-between rounded-t-lg transition-colors`}>
         <div>
-          <h2 className="font-semibold text-xl  text-[#172b4d] dark:text-slate-200">
+          <h2 className={`font-semibold text-xl ${getHeaderTextColor(status)}`}>
             {getStatusLabel(status)}
           </h2>
           <p className="text-[13px] font-medium text-[#5e6c84] dark:text-slate-400 mt-0.5">
