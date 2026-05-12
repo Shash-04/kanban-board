@@ -1,11 +1,17 @@
 'use client';
 
+import dynamic from "next/dynamic";
+
 import React, { useEffect } from 'react';
 import { RotateCcw } from 'lucide-react';
 import useBoardStore from '@/store/useBoardStore';
 import { useUndoShortcut } from '@/hooks/useUndoShortcut';
-import { Board } from '@/components/Board';
 import { FilterBar } from '@/components/FilterBar';
+
+
+const Board = dynamic(() => import('@/components/Board').then(mod => mod.Board), {
+  ssr: false,
+});
 
 export default function Home() {
   useUndoShortcut();
