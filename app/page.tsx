@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { RotateCcw } from 'lucide-react';
 import useBoardStore from '@/store/useBoardStore';
 import { useUndoShortcut } from '@/hooks/useUndoShortcut';
@@ -17,7 +17,6 @@ export default function Home() {
   useUndoShortcut();
 
   const { undo, redo } = useBoardStore.temporal.getState();
-  const { filter } = useBoardStore();
 
   return (
     <div className="min-h-screen bg-[#f4f5f7] dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 transition-colors duration-300">

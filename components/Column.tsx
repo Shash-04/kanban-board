@@ -6,7 +6,7 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Plus } from 'lucide-react';
 import { Task, TaskStatus } from '@/types';
 import { TaskCard } from './TaskCard';
-import { getStatusColor, getStatusLabel } from '@/lib/boardUtils';
+import { getStatusLabel } from '@/lib/boardUtils';
 import useBoardStore from '@/store/useBoardStore';
 
 interface ColumnProps {

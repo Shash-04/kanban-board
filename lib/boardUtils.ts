@@ -30,21 +30,6 @@ export const getPriorityColor = (priority: Priority): string => {
   }
 };
 
-export const getStatusColor = (status: string): string => {
-  switch (status) {
-    case 'todo':
-      return 'bg-slate-100 dark:bg-slate-800';
-    case 'in-progress':
-      return 'bg-blue-100 dark:bg-blue-900';
-    case 'in-review':
-      return 'bg-purple-100 dark:bg-purple-900';
-    case 'done':
-      return 'bg-green-100 dark:bg-green-900';
-    default:
-      return 'bg-slate-100 dark:bg-slate-800';
-  }
-};
-
 export const getStatusLabel = (status: string): string => {
   const labels: Record<string, string> = {
     'todo': 'To Do',
