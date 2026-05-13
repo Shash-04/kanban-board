@@ -62,7 +62,7 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Info */}
+              {/* Tip */}
               <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-5 space-y-2 shadow-sm">
                 <p className="text-[15px] font-semibold text-[#0052CC] dark:text-blue-300">
                   Tip

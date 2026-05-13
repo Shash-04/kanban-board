@@ -58,7 +58,7 @@ export function TaskCard({ task, isFiltered = false, onEdit, onDelete }: TaskCar
           {...listeners}
           className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 flex-shrink-0 mt-0.5"
         >
-          <GripVertical size={16} />
+          <GripVertical size={30} />
         </button>
 
         <div className="flex-1 min-w-0">

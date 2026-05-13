@@ -6,25 +6,6 @@ import { temporal } from 'zundo';
 import { nanoid } from 'nanoid';
 import { BoardState, Task, TaskStatus, Priority } from '@/types';
 
-const generateFractionalOrder = (before?: number, after?: number): number => {
-  const MIN = 0;
-  const MAX = 2 ** 31 - 1;
-  
-  if (before === undefined && after === undefined) {
-    return Math.random() * MAX;
-  }
-  
-  if (before === undefined) {
-    return after! / 2;
-  }
-  
-  if (after === undefined) {
-    return before + (MAX - before) / 2;
-  }
-  
-  return (before + after) / 2;
-};
-
 const INITIAL_TASKS: Task[] = [
   {
     id: 'task-1',

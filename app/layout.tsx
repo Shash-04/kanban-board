@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Kanban Board',
+  title: 'Task Forge',
   description: 'A lightweight Kanban board with drag-and-drop, filtering, and undo history',
 }
 
