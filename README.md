@@ -37,24 +37,6 @@ Instead of using array indices (which require updating every item's index when o
 ### 4. Component-Driven UI
 The UI is built using a consistent design system based on Shadcn UI. This ensures a professional "Jira" feel with consistent spacing, typography, and interactive states (hover, focus, active).
 
-## 📥 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm / pnpm / yarn
-
-### Installation
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## 📁 Project Structure
 
 - `/app`: Next.js App Router pages and layouts.
@@ -63,3 +45,23 @@ The UI is built using a consistent design system based on Shadcn UI. This ensure
 - `/types`: TypeScript interfaces and types.
 - `/hooks`: Custom React hooks for board logic.
 - `/lib`: Utility functions (fractional ordering logic, clsx, etc.).
+
+## ⚖️ Tradeoffs
+
+1. **Client-Side Storage**: Right now, the project uses `localStorage` to save board data. This keeps interactions fast and works even without an internet connection, but the data stays limited to a single browser/device.
+
+2. **Priority-Based Task Ordering**: Tasks inside each column are automatically arranged by priority (`High` → `Medium` → `Low`) so important work stays visible at the top. The tradeoff is that users don’t get completely free drag-and-drop positioning when task priority conflicts with manual ordering.
+
+3. **Fractional Indexing Constraints**: The ordering system uses fractional indexing for smooth and efficient local reordering. While it performs well in normal usage, continuously inserting tasks between the same positions over a very long time could eventually create precision-related edge cases.
+
+## 🔮 Future Improvements
+
+1. **Subtasks & Checklists**: Add support for subtasks and progress tracking inside each task card to make larger tasks easier to manage.
+
+2. **Search & Smart Filters**: Introduce global search along with filters for labels, priorities, due dates, and custom tags to improve navigation on larger boards.
+
+3. **File Attachments**: Allow users to attach images, documents, or other files directly to tasks for added context and collaboration.
+
+
+
+
